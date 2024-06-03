@@ -19,7 +19,10 @@
 """
 
 import collections
+collections.Iterable = collections.abc.Iterable
+
 import fractions
+import math
 from fractions import Fraction as Fr
 
 import numpy as np
@@ -50,7 +53,7 @@ def rat(x, tol):
     return Fr(float(x)).limit_denominator(int(1 / float(tol))).numerator, \
         Fr(float(x)).limit_denominator(int(1 / float(tol))).denominator
 
-gcd = fractions.gcd
+gcd = math.gcd
 
 lcm = lambda a, b: int(a * b / float(gcd(a, b)))
 lcm.__doc__ = """Calculate the Least Common Multiple of ``a`` and ``b``.\n"""
@@ -327,7 +330,7 @@ def pretty_lti(arg):
     p = np.atleast_1d(p)
     z = np.round(np.real_if_close(z), 4)
     p = np.round(np.real_if_close(p), 4)
-    k = np.round(np.real_if_close(k), 4)
+    k = np.round(k, 4)
     signs = {1:'+', -1:'-'}
     if not len(z) and not len(p):
         return "%g" % k
@@ -335,13 +338,7 @@ def pretty_lti(arg):
     if np.allclose(k, 0., atol=1e-5):
         return "0"
     if k != 1:
-        if np.isreal(k):
-            ppstr[1] = "%g " % k
-        else:
-            # quadrature modulators support
-            ppstr[1] += "(%g %s %gj) " % (np.real(k),
-                                          signs[np.sign(np.imag(k))],
-                                          np.abs(np.imag(k)))
+        ppstr[1] = "%g " % k
     for i, s in zip((0, 2), (z, p)):
         rz = None
         m = 1

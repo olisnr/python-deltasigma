@@ -17,6 +17,8 @@
 """
 
 import collections
+collections.Iterable = collections.abc.Iterable
+
 
 import numpy as np
 

@@ -19,6 +19,8 @@
 from __future__ import division
 
 import collections
+collections.Iterable = collections.abc.Iterable
+
 from warnings import warn
 
 import numpy as np
