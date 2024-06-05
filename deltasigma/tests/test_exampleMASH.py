@@ -62,10 +62,10 @@ class testMultipleQ:
         # compute the spectra
         window = ds.ds_hann(N)
         NBW = 1.5/N
-        spec0 = np.fft.fft(vf*window)/(M*N/2)/ds.undbv(-6)
-        spec1 = np.fft.fft(v1*window)/(M*N/2)/ds.undbv(-6)
-        spec2 = np.fft.fft(v1*window)/(M*N/2)/ds.undbv(-6)
-        freq = np.linspace(0, 0.5, N/2 + 1)
+        spec0 = np.fft.fft(vf*window)/(M*N//2)/ds.undbv(-6)
+        spec1 = np.fft.fft(v1*window)/(M*N//2)/ds.undbv(-6)
+        spec2 = np.fft.fft(v1*window)/(M*N//2)/ds.undbv(-6)
+        freq = np.linspace(0, 0.5, N//2 + 1)
 
         # smooth, calculate the theorethical response and the SNR for VF
         spec0_smoothed = ds.circ_smooth(np.abs(spec0)**2., 16)
