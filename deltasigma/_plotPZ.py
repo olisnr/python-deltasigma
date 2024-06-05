@@ -82,12 +82,12 @@ def plotPZ(H, color='b', markersize=5, showlist=False):
         pole_fmt['color'] = color
         zero_fmt['color'] = color
 
-    hold_status = plt.ishold()
+    #hold_status = plt.ishold()
     plt.grid(True)
 
     # Plot x and o for poles and zeros, respectively
     plt.plot(p.real, p.imag, linestyle='None', **pole_fmt)
-    plt.hold(True)
+    ##plt. hold(True); # old crap
     if len(z) > 0:
         plt.plot(z.real, z.imag, linestyle='None', **zero_fmt)
 
@@ -129,5 +129,5 @@ def plotPZ(H, color='b', markersize=5, showlist=False):
     plt.ylabel('Imag')
     plt.xlabel('Real')
 
-    if not hold_status:
-        plt.hold(False)
+    # if not hold_status:
+    #     #plt. hold(False); # old crap

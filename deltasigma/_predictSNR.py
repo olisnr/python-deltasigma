@@ -241,14 +241,14 @@ def powerGain(num, den, Nimp=100):
     in future calls and Nimp0 is the suggested number (100) to use.
     """
     unstable = False
-    _, (imp, ) = dimpulse((num, den, 1), t=np.linspace(0, Nimp, Nimp))
-    if np.sum(abs(imp[Nimp - 11:Nimp])) < 1e-08 and Nimp > 50:
+    _, (imp, ) = dimpulse((num, den, 1), t=np.linspace(0, Nimp, int(Nimp)))
+    if np.sum(abs(imp[int(Nimp) - 11:int(Nimp)])) < 1e-08 and Nimp > 50:
         Nimp = np.round(Nimp/1.3)
     else:
-        while np.sum(abs(imp[Nimp - 11:Nimp])) > 1e-06:
+        while np.sum(abs(imp[int(Nimp) - 11:int(Nimp)])) > 1e-06:
             Nimp = Nimp*2
-            _, (imp, ) = dimpulse((num, den, 1), t=np.linspace(0, Nimp, Nimp))
-            if np.sum(abs(imp[Nimp - 11:Nimp])) >= 50 or Nimp >= 10000.0:
+            _, (imp, ) = dimpulse((num, den, 1), t=np.linspace(0, Nimp, int(Nimp)))
+            if np.sum(abs(imp[int(Nimp) - 11:int(Nimp)])) >= 50 or Nimp >= 10000.0:
                 unstable = True
                 break
 

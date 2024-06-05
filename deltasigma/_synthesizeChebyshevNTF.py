@@ -95,7 +95,7 @@ def synthesizeChebyshevNTF(order=3, OSR=64, opt=0, H_inf=1.5, f0=0.):
         # green with slightly bigger markers so that we can better
         # distinguish the two NTF's when overlayed.
         plotPZ(H1, markersize=7, color='#90EE90')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plotPZ(H0, markersize=5)
         plt.title('NTF Poles and Zeros')
         f = np.concatenate((np.linspace(0, 0.75/OSR, 100), np.linspace(0.75/OSR, 0.5, 100)))
@@ -105,7 +105,7 @@ def synthesizeChebyshevNTF(order=3, OSR=64, opt=0, H_inf=1.5, f0=0.):
         # 2. Plot the magnitude responses.
         plt.subplot(222)
         plt.plot(f, magH0, label='synthesizeNTF')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.plot(f, magH1, label='synthesizeChebyshevNTF')
         figureMagic([0, 0.5], 0.05, None, [-80, 20], 10, None)
         plt.xlabel('Normalized frequency ($1\\\\rightarrow f_s)$')
@@ -120,7 +120,7 @@ def synthesizeChebyshevNTF(order=3, OSR=64, opt=0, H_inf=1.5, f0=0.):
         magH0 = dbv(evalTF(H0, z))
         magH1 = dbv(evalTF(H1, z))
         plt.semilogx(f*2*OSR, magH0, label='synthesizeNTF')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.semilogx(f*2*OSR, magH1, label='synthesizeChebyshevNTF')
         plt.axis([fstart, 1, -50, 0])
         plt.grid(True)
@@ -160,7 +160,7 @@ def synthesizeChebyshevNTF(order=3, OSR=64, opt=0, H_inf=1.5, f0=0.):
         # green with slightly bigger markers so that we can better
         # distinguish the two NTF's when overlayed.
         plotPZ(H1, markersize=7, color='#90EE90')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plotPZ(H0, markersize=5)
         plt.title('NTF Poles and Zeros')
         f = np.concatenate((np.linspace(0, 0.75/OSR, 100), np.linspace(0.75/OSR, 0.5, 100)))
@@ -170,7 +170,7 @@ def synthesizeChebyshevNTF(order=3, OSR=64, opt=0, H_inf=1.5, f0=0.):
         # 2. Plot the magnitude responses.
         plt.subplot(222)
         plt.plot(f, magH0, label='synthesizeNTF')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.plot(f, magH1, label='synthesizeChebyshevNTF')
         figureMagic([0, 0.5], 0.05, None, [-80, 20], 10, None)
         plt.xlabel('Normalized frequency ($1\\\\rightarrow f_s)$')
@@ -185,7 +185,7 @@ def synthesizeChebyshevNTF(order=3, OSR=64, opt=0, H_inf=1.5, f0=0.):
         magH0 = dbv(evalTF(H0, z))
         magH1 = dbv(evalTF(H1, z))
         plt.semilogx(f*2*OSR, magH0, label='synthesizeNTF')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.semilogx(f*2*OSR, magH1, label='synthesizeChebyshevNTF')
         plt.axis([fstart, 1, -60, -20])
         plt.grid(True)

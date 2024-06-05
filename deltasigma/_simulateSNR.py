@@ -136,7 +136,7 @@ def simulateSNR(arg1, osr, amp=None, f0=0, nlev=2, f=None, k=13,
         snr_pred, amp, _, _, _ = predictSNR(H,OSR)
         snr, amp = simulateSNR(H, OSR)
         plt.plot(amp, snr_pred, 'b', label='Predicted')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.plot(amp, snr, 'go', label='Simulated')
         plt.grid(True)
         figureMagic([-100, 0], 10, None,
@@ -156,7 +156,7 @@ def simulateSNR(arg1, osr, amp=None, f0=0, nlev=2, f=None, k=13,
         snr_pred, amp, _, _, _ = predictSNR(H,OSR)
         snr, amp = simulateSNR(H, OSR)
         plt.plot(amp, snr_pred, 'b', label='Predicted')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.plot(amp, snr, 'go', label='Simulated')
         plt.grid(True)
         figureMagic([-100, 0], 10, None,
@@ -224,10 +224,10 @@ def simulateSNR(arg1, osr, amp=None, f0=0, nlev=2, f=None, k=13,
                                  np.arange(Ntransient/2)))
     if not quadrature:
         tone = M*np.sin(2*np.pi*F/N*np.arange(N + Ntransient))
-        tone[:Ntransient/2] = tone[:Ntransient/2] * soft_start
+        tone[:Ntransient//2] = tone[:Ntransient//2] * soft_start
     else:
         tone = M*np.exp(2j*np.pi*F/N * np.arange(N + Ntransient))
-        tone[:Ntransient/2] = tone[:Ntransient/2] * soft_start
+        tone[:Ntransient//2] = tone[:Ntransient//2] * soft_start
         if not quadrature_ntf:
             tone = tone.reshape((1, -1))
             tone = np.vstack((np.real(tone), np.imag(tone)))

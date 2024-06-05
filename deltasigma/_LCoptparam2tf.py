@@ -6,20 +6,20 @@ def LCoptparam2tf(x, param):
     n = param['n']
     param.update({'gw':np.ones(n-1)})
     if param['form'] == 'FB':
-        param.update({'gu':np.concatenate((np.array([1]), np.zeros(n)))})
+        param.update({'gu':np.concatenate((np.array([1]), np.zeros(int(n))))})
         param.update({'gv':copy.copy(x)})
         param.update({'gx':np.concatenate((np.zeros(n-1), np.array([1])))
-        param.update({'rx':np.zeros(n)})
+        param.update({'rx':np.zeros(int(n))})
     elif param['form'] == 'FF':
         param.update({'gu':np.concatenate((np.array([1]), np.zeros(n-1),
                                            np.array([1])))})
-        param.update({'gv':np.concatenate((np.array([1]), np.zeros(n))})
+        param.update({'gv':np.concatenate((np.array([1]), np.zeros(int(n)))})
         param.update({'gx':copy.copy(x)
-        param.update({'rx':np.zeros(n)})
+        param.update({'rx':np.zeros(int(n))})
     elif param['form'] == 'FFR':
         param.update({'gu':np.concatenate((np.array([1]), np.zeros(n-1),
                                            np.array([1])))})
-        param.update({'gv':np.concatenate((np.array(x[0]), np.zeros(n)))})
+        param.update({'gv':np.concatenate((np.array(x[0]), np.zeros(int(n))))})
         param.update({'gx':np.concatenate((np.zeros(n-1), np.array([1])))})
         param.update({'rx':np.concatenate((np.array([0]), x[1:n]))})
     elif param['form'] == 'GEN':

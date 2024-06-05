@@ -119,7 +119,7 @@ def synthesizeNTF0(order, osr, opt, H_inf, f0):
     if np.isscalar(opt):
         # opt is a number
         if opt == 0:
-            z = np.zeros(order)
+            z = np.zeros(int(order))
         else:
             z = dw*ds_optzeros(order, opt)
         if z.size == 0:
@@ -133,7 +133,7 @@ def synthesizeNTF0(order, osr, opt, H_inf, f0):
     else:
         z = opt
 
-    p = np.zeros(order)
+    p = np.zeros(int(order))
     k = 1
     fprev = 0
 
@@ -144,7 +144,7 @@ def synthesizeNTF0(order, osr, opt, H_inf, f0):
         if H_inf >= HinfLimit:
             warn('Unable to achieve specified H_inf.\n'
                  'Setting all NTF poles to zero.')
-            p = np.zeros(order)
+            p = np.zeros(int(order))
         else:
             x = 0.3**(order-1)   # starting guess
             for itn in range(1, itn_limit + 1):
@@ -174,7 +174,7 @@ def synthesizeNTF0(order, osr, opt, H_inf, f0):
                 if x > 1e6:
                     warn('Unable to achieve specified Hinf.\n'
                          'Setting all NTF poles to zero.')
-                    p = np.zeros(order)
+                    p = np.zeros(int(order))
                     break
                 if itn == itn_limit:
                     warn('Iteration limit exceeded.')
@@ -212,7 +212,7 @@ def synthesizeNTF0(order, osr, opt, H_inf, f0):
             if x > 1e6:
                 warn('Unable to achieve specified Hinf.\n'
                      'Setting all NTF poles to zero.')
-                p = np.zeros(order)
+                p = np.zeros(int(order))
                 break
             if itn == itn_limit:
                 warn('Iteration limit exceeded.')

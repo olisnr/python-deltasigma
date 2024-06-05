@@ -84,7 +84,7 @@ def simulateDSM(u, arg2, nlev=2, x0=0.):
         t = np.arange(85)
         # the equivalent of MATLAB 'stairs' is step in matplotlib
         plt.step(t, u[t], 'g', label='u(n)')
-        plt.hold(True)
+        #plt. hold(True); # old crap
         plt.step(t, v[t], 'b', label='v(n)')
         plt.axis([0, 85, -1.2, 1.2]);
         plt.ylabel('u, v');
@@ -92,7 +92,7 @@ def simulateDSM(u, arg2, nlev=2, x0=0.):
         plt.legend()
         plt.subplot(2, 1, 2)
         spec = fft(v*ds_hann(N))/(N/4)
-        plt.plot(np.linspace(0, 0.5, N/2 + 1), dbv(spec[:N/2 + 1]))
+        plt.plot(np.linspace(0, 0.5, N//2 + 1), dbv(spec[:N//2 + 1]))
         plt.axis([0, 0.5, -120, 0])
         plt.grid(True)
         plt.ylabel('dBFS/NBW')

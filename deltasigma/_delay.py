@@ -29,7 +29,7 @@ def delay(x, n=1):
         y = np.zeros(x.shape)
     else:
         if len(x.shape) == 1:
-            y = np.concatenate((np.zeros((n,)), x[:nx-n]))
+            y = np.concatenate((np.zeros(int(n)), x[:nx-n]))
         elif x.shape[0] > x.shape[1]:
             y = np.concatenate((np.zeros((n, x.shape[1])), x[:nx-n, :]), axis=0)
         else:

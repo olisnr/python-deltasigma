@@ -84,7 +84,7 @@ def ds_optzeros(n, opt=1):
     
     # Sort the zeros and replicate them.
     z = np.sort(optZeros)
-    optZeros = np.zeros((n,))
+    optZeros = np.zeros(int(n))
     m = 0
     if n % 2 == 1:
         optZeros[0] = z[0]

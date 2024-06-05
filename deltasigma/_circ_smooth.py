@@ -77,14 +77,14 @@ def circ_smooth(x, n=16):
         window = ds_hann(N)
         NBW = 1.5/N
         spec0 = fft(v * window)/(N/4)
-        freq = np.linspace(0, 0.5, N/2 + 1)
+        freq = np.linspace(0, 0.5, N//2 + 1)
         # plotting
         plt.figure(figsize=(12, 7))
         plt.subplot(211)
-        plt.plot(freq, dbv(spec0[:N/2 + 1]), 'c', linewidth=1, label='$S$')
-        plt.hold(True)
+        plt.plot(freq, dbv(spec0[:N//2 + 1]), 'c', linewidth=1, label='$S$')
+        #plt. hold(True); # old crap
         spec_smoothed = circ_smooth(np.abs(spec0)**2., 16)
-        plt.plot(freq, dbp(spec_smoothed[:N/2 + 1]), 'b--', linewidth=2, label='$\\\\mathrm{circ\\\\_smooth}(S)$')
+        plt.plot(freq, dbp(spec_smoothed[:N//2 + 1]), 'b--', linewidth=2, label='$\\\\mathrm{circ\\\\_smooth}(S)$')
         plotSpectrum(spec0, fin, 'r', linewidth=2, label='$\\\\mathrm{plotSpectrum}(S)$')
         Snn = np.abs(evalTF(ntf, np.exp(2j*np.pi*freq)))**2 * 2/12*(delta)**2
         plt.plot(freq, dbp(Snn*NBW), 'm', linewidth=1.5, label='$\\\\mathrm{from\\\\ NTF}$')
@@ -101,10 +101,10 @@ def circ_smooth(x, n=16):
         ax.set_title('Smoothing and plotting for LOG and LIN axes')
         plt.legend(loc=4)
         plt.subplot(212)
-        plt.plot(freq, dbv(spec0[:N/2 + 1]), 'c', linewidth=1, label='$S$')
-        plt.hold(True)
+        plt.plot(freq, dbv(spec0[:N//2 + 1]), 'c', linewidth=1, label='$S$')
+        #plt. hold(True); # old crap
         plotSpectrum(spec0, fin, '--r', linewidth=2, label='$\\\\mathrm{plotSpectrum}(S)$')
-        plt.plot(freq, dbp(spec_smoothed[:N/2 + 1]), 'b', linewidth=2, label='$\\\\mathrm{circ\\\\_smooth}(S)$')
+        plt.plot(freq, dbp(spec_smoothed[:N//2 + 1]), 'b', linewidth=2, label='$\\\\mathrm{circ\\\\_smooth}(S)$')
         plt.plot(freq, dbp(Snn*NBW), 'm', linewidth=1.5, label='$\\\\mathrm{from\\\\ NTF}$')
         msg = 'SQNR  =  %.1fdB\\n @ A = %.1fdBFS & osr = %.0f\\n' % \\
               (snr, dbv(spec0[fin]), osr)

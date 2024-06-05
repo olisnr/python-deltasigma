@@ -85,14 +85,14 @@ def logsmooth(X, inBin, nbin=8, n=3):
         u0 = u0 + .01*u0**2+.001*u0**3+.005*u0**4
         U = np.fft.fft(u0 * ds_hann(N))/(N/4)
         f = np.linspace(0, Fs, N + 1)
-        f = f[:N/2 + 1]
+        f = f[:N//2 + 1]
         plt.subplot(211)
-        plt.semilogx(f, dbv(U[:N/2 + 1]))
-        plt.hold(True)
+        plt.semilogx(f, dbv(U[:N//2 + 1]))
+        #plt. hold(True); # old crap
         inBin = np.round(freq/Fs*N)
         fS, US = logsmooth(U, inBin)
         plt.semilogx(fS*Fs, US, 'r', linewidth=2.5)
-        plt.xlim([f[0]*Fs, Fs/2])
+        plt.xlim([f[0]*Fs, Fs//2])
         plt.ylabel('U(f) [dB]')
         figureMagic(xRange=[100, 1e4], yRange=[-400, 0], name='Spectrum')
         plt.subplot(212)
